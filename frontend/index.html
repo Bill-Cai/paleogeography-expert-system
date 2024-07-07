@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Paleogeography Expert Q&A System</title>
+    <meta name="description" content="A paleogeography research assistant powered by GPT-4">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./static/LiAgent.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/site/styles.css"/>
+    <style>
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .agent-name {
+            text-align: center;
+        }
+
+        .agent-item-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .agent-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .agent-item img {
+            margin-right: 10px;
+        }
+
+        .agent-item strong {
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .agent-choices {
+            display: none;
+        }
+
+        .btn-show {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<main class="container" id="form">
+    <div class="agent-item-container">
+        <div class="agent-item">
+            <img src="/static/LiAgent.png" class="avatar" alt="Auto Agent">
+            <strong>Paleogeography Expert Q&A System</strong>
+        </div>
+    </div>
+    <form method="POST" class="mt-3" onsubmit="GPTResearcher.startResearch(); return false;">
+        <div class="form-group">
+            <label for="task" class="agent-question">What would you like me to research next?</label>
+            <input type="text" id="task" name="task" class="form-control" required>
+            <input type="radio" name="agent" id="autoAgent" value="Auto Agent" checked hidden>
+        </div>
+        <div class="form-group">
+            <div class="row"></div>
+            <button type="button" id="btnShowAuto" class="btn btn-secondary mt-3 btn-show">Auto Agent</button>
+        </div>
+        <div class="form-group">
+            <label class="agent-question">What type of report would you like me to generate?</label>
+            <select name="report_type" class="form-control" required>
+                <option value="research_report">Research Report</option>
+                <option value="resource_report">Resource Report</option>
+                <option value="outline_report">Outline Report</option>
+            </select>
+        </div>
+        <input type="submit" value="Research" class="btn btn-primary button-padding">
+    </form>
+
+    <div class="margin-div">
+        <h2>System Output</h2>
+        <p class="mt-2 text-left" style="font-size: 0.8rem;">An agent tailored specifically to your task
+            will be generated to provide the most precise and relevant research results.</p>
+        <div id="output"></div>
+    </div>
+    <div class="margin-div">
+        <h2>Research Report</h2>
+        <div id="reportContainer"></div>
+        <div id="reportActions">
+            <div class="alert alert-info" role="alert" id="status"></div>
+            <a id="copyToClipboard" onclick="GPTResearcher.copyToClipboard()" class="btn btn-secondary mt-3"
+               style="margin-right: 10px;">Copy to clipboard</a>
+            <a id="downloadLink" href="#" class="btn btn-secondary mt-3" target="_blank">Download as PDF</a>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+<script src="/site/scripts.js"></script>
+<script>
+    // const btnChoose = document.getElementById('btnChoose');
+    const btnShowAuto = document.getElementById('btnShowAuto');
+    const autoAgentDiv = document.getElementById('autoAgentDiv');
+    const agentChoices = document.getElementsByClassName('agent-choices');
+
+    /**
+     btnChoose.addEventListener('click', function () {
+     btnShowAuto.style.display = 'inline-block';
+     btnChoose.style.display = 'none';
+     autoAgentDiv.style.display = 'none';
+     agentChoices[0].style.display = 'flex';
+     });
+     **/
+
+    btnShowAuto.addEventListener('click', function () {
+        btnShowAuto.style.display = 'none';
+        btnChoose.style.display = 'inline-block';
+        autoAgentDiv.style.display = 'flex';
+        agentChoices[0].style.display = 'none';
+    });
+</script>
+</body>
+
+</html>

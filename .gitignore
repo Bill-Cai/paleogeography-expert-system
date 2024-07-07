@@ -1,0 +1,7 @@
+preprocess/
+outputs/
+
+.idea
+.DS_Store
+
+**/__pycache__/
