@@ -5,7 +5,7 @@ This project is to support the following work (in submission):
 **Mitigating Interpretation Bias in Geological Records Using Large Language Models: Insights from Paleoenvironmental
 Analysis**
 
-<a href=''><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
+<a href='https://arxiv.org/pdf/2407.09977'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
 
 ## How to use
 
@@ -63,4 +63,13 @@ The API is now available at `http://localhost:8000`.
 If you use this code in your research, please cite the following content:
 
 ```
+@misc{wang2024mitigatinginterpretationbiasrock,
+      title={Mitigating Interpretation Bias in Rock Records with Large Language Models: Insights from Paleoenvironmental Analysis}, 
+      author={Luoqi Wang and Haipeng Li and Linshu Hu and Jiarui Cai and Zhenhong Du},
+      year={2024},
+      eprint={2407.09977},
+      archivePrefix={arXiv},
+      primaryClass={physics.geo-ph},
+      url={https://arxiv.org/abs/2407.09977}, 
+}
 ```
